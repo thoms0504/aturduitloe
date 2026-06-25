@@ -35,8 +35,15 @@ export default function AIInsights({ startDate, endDate, period }: AIInsightsPro
         body: JSON.stringify({ startDate, endDate, period }),
       })
       if (!res.ok) {
-        const err = await res.json()
-        throw new Error(err.error || 'Gagal menghasilkan insight')
+        let errMessage = 'Gagal menghasilkan insight'
+        try {
+          const err = await res.json()
+          errMessage = err.error || errMessage
+        } catch {
+          if (res.status === 504) errMessage = 'Waktu request habis (Timeout). API Gemini butuh waktu terlalu lama.'
+          else errMessage = `Terjadi kesalahan pada server (Status: ${res.status})`
+        }
+        throw new Error(errMessage)
       }
       const data = await res.json()
       setInsights(data.insights || [])

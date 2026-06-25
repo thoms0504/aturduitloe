@@ -4,6 +4,8 @@ import { generateAIInsights } from '@/lib/gemini'
 import { format, subMonths, startOfMonth, endOfMonth } from 'date-fns'
 import { id } from 'date-fns/locale'
 
+export const maxDuration = 60 // Allow longer execution on Vercel
+
 export async function POST(request: NextRequest) {
   try {
     const supabase = createServerClient()
