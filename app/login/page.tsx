@@ -2,6 +2,7 @@
 import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Eye, EyeOff, BarChart3, LogIn } from 'lucide-react'
 import { createClient } from '@/lib/supabase-browser'
 import toast from 'react-hot-toast'
@@ -42,7 +43,7 @@ function LoginForm() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
-          <img src="/logo.png" alt="AturDuit Logo" className="w-14 h-14 rounded-2xl mb-4 shadow-lg shadow-indigo-500/30 object-cover" />
+          <Image src="/logo.png" alt="AturDuit Logo" width={56} height={56} className="w-14 h-14 rounded-2xl mb-4 shadow-lg shadow-indigo-500/30 object-cover" priority />
           <h1 className="text-2xl font-bold text-[var(--text-primary)]">
             AturDuit<span style={{ color: 'var(--accent)' }}>.loe</span>
           </h1>

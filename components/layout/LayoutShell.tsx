@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 import { Menu } from 'lucide-react'
 import Sidebar from './Sidebar'
 import MobileNav from './MobileNav'
@@ -70,7 +71,7 @@ export default function LayoutShell({ children }: LayoutShellProps) {
             </button>
 
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Logo" className="w-7 h-7 rounded-lg object-cover shadow-sm" />
+              <Image src="/logo.png" alt="Logo" width={28} height={28} className="w-7 h-7 rounded-lg object-cover shadow-sm" priority />
               <span className="font-bold text-sm text-[var(--text-primary)]">AturDuit<span style={{ color: 'var(--accent)' }}>.loe</span></span>
             </div>
 

@@ -1,12 +1,16 @@
 'use client'
 import { useState, useEffect, useCallback, useMemo } from 'react'
+import dynamic from 'next/dynamic'
 import { Plus, Download, ChevronLeft, ChevronRight } from 'lucide-react'
 import { format, startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth, startOfYear, endOfYear, eachDayOfInterval, subDays, subWeeks, subMonths, subYears, parseISO } from 'date-fns'
 import { id } from 'date-fns/locale'
 import toast from 'react-hot-toast'
 import type { Transaction, DashboardSummary, ChartDataPoint, CategorySummary, Period } from '@/types'
 import SummaryCards from '@/components/dashboard/SummaryCards'
-import CashFlowChart from '@/components/dashboard/CashFlowChart'
+const CashFlowChart = dynamic(() => import('@/components/dashboard/CashFlowChart'), { 
+  ssr: false,
+  loading: () => <div className="h-[300px] w-full animate-pulse bg-[var(--bg-muted)] rounded-xl" />
+})
 import RecentTransactions from '@/components/dashboard/RecentTransactions'
 import AIInsights from '@/components/dashboard/AIInsights'
 import TransactionModal from '@/components/modals/TransactionModal'

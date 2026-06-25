@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import {
   LayoutDashboard, ArrowLeftRight, TrendingUp, Tag, BarChart3, LogOut, User, X, ChevronLeft, ChevronRight,
@@ -50,7 +51,7 @@ export default function Sidebar({ mobileOpen = false, onMobileClose }: SidebarPr
         'border-[var(--bg-sidebar-border)]',
         isCollapsed && 'justify-center px-3'
       )}>
-        <img src="/logo.png" alt="Logo" className="w-9 h-9 rounded-xl shrink-0 object-cover shadow-sm" />
+        <Image src="/logo.png" alt="Logo" width={36} height={36} className="w-9 h-9 rounded-xl shrink-0 object-cover shadow-sm" priority />
         {!isCollapsed && (
           <div className="min-w-0">
             <div className="font-bold text-sm leading-tight text-[var(--text-primary)]">AturDuit</div>

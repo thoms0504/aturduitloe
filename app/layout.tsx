@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
@@ -15,10 +16,12 @@ export const metadata: Metadata = {
   description: 'Kelola keuangan pribadi dengan cerdas — tracking pemasukan, pengeluaran & investasi kamu.',
 }
 
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" className="dark">
-      <body className="mesh-bg min-h-screen">
+      <body className={`${inter.variable} font-sans mesh-bg min-h-screen`}>
         <ThemeProvider>
           <LayoutShell>
             {children}
